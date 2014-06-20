@@ -1,0 +1,42 @@
+{
+  "name": "elemez2json",
+  "version": "0.0.0",
+  "description": "Use the elemez raw data endpoint to extract data to json",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/B2MSolutions/elemez2json.git"
+  },
+  "author": {
+    "name": "B2M Solutions",
+    "url": "https://github.com/B2MSolutions"
+  },
+  "contributors": [{
+    "name": "Roy Lines",
+    "url": "http://roylines.co.uk"
+  }, {
+    "name": "Ivan Bokii",
+    "url": "https://github.com/ivanbokii"
+  }],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/B2MSolutions/elemez2json/issues"
+  },
+  "bin": {
+    "elemez2json": "bin/elemez2json"
+  },
+  "homepage": "https://github.com/B2MSolutions/elemez2json",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1",
+    "sinon": "^1.10.2"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "lodash": "^2.4.1",
+    "minimist": "^0.1.0",
+    "request": "^2.36.0"
+  }
+}

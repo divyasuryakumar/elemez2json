@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+process.title = 'elemez2json';
+
+var elemez2json = require('../lib/elemez2json');
+
+return elemez2json(process.argv, function(e) {
+
+  if(e) {
+    console.error(e);
+    return process.exit(1);
+  }
+  return process.exit(0);
+});
+
