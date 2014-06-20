@@ -21,4 +21,4 @@ elemez2json --token <YOURTOKEN>
 
 
 ## Contributors
-Pair programmed by [Roy Lines](http://roylines.co.uk) and [Ivan Bokii](https://github.com/ivanbokii).
+Pair programmed by [Roy Lines](http://roylines.co.uk) and [Ivan Bokii](https://github.com/ivanbokii)
