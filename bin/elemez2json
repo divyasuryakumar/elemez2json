@@ -4,10 +4,10 @@ process.title = 'elemez2json';
 
 var elemez2json = require('../lib/elemez2json');
 
-return elemez2json(process.argv, function(e) {
+return elemez2json(process.argv, function(e, details) {
 
   if(e) {
-    console.error(e);
+    console.error(e, details);
     return process.exit(1);
   }
   return process.exit(0);
