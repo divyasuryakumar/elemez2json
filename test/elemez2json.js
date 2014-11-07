@@ -92,7 +92,7 @@ describe('elemez2json', function() {
       sinon.stub(request, 'get');
       var events = _.map(_.range(0, 5), function(i) {
         return {
-          key: new Buffer(new Date(2014, i, 1).toISOString().substr(0,19)+"Z0000000000000000").toString('base64'),
+          key: new Buffer(new Date(Date.UTC(2014, i, 1)).toISOString().substr(0,19)+"Z0000000000000000").toString('base64'),
           scheme: 'sch' + i,
           schemeid: 'sid' + i,
           received: Date.UTC(2014, i, 1),
@@ -107,7 +107,7 @@ describe('elemez2json', function() {
       });
 
       var response0 = {
-        lastKey: new Buffer(new Date('2014-01-01').toISOString().substr(0,19)+"Z0000000000000000").toString('base64'),
+        lastKey: new Buffer(new Date(Date.UTC(2014, 0, 1)).toISOString().substr(0,19)+"Z0000000000000000").toString('base64'),
         events: events
       };
       var response1 = {
@@ -155,8 +155,8 @@ describe('elemez2json', function() {
         expect(console.log.args[1][0]).to.deep.equal("{\"key\":\"MjAxNC0wMS0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch0\",\"schemeid\":\"sid0\",\"received\":\"2014-01-01T00:00:00.000Z\",\"raised\":\"2014-01-02T00:00:00.000Z\",\"sender\":\"sdr0\",\"source\":\"src0\",\"type\":\"t0\",\"data\":{\"a\":0}}");
         expect(console.log.args[2][0]).to.deep.equal(",{\"key\":\"MjAxNC0wMi0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch1\",\"schemeid\":\"sid1\",\"received\":\"2014-02-01T00:00:00.000Z\",\"raised\":\"2014-02-02T00:00:00.000Z\",\"sender\":\"sdr1\",\"source\":\"src1\",\"type\":\"t1\",\"data\":{\"a\":1}}");
         expect(console.log.args[3][0]).to.deep.equal(",{\"key\":\"MjAxNC0wMy0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch2\",\"schemeid\":\"sid2\",\"received\":\"2014-03-01T00:00:00.000Z\",\"raised\":\"2014-03-02T00:00:00.000Z\",\"sender\":\"sdr2\",\"source\":\"src2\",\"type\":\"t2\",\"data\":{\"a\":2}}");
-        expect(console.log.args[4][0]).to.deep.equal(",{\"key\":\"MjAxNC0wMy0zMVQyMzowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch3\",\"schemeid\":\"sid3\",\"received\":\"2014-04-01T00:00:00.000Z\",\"raised\":\"2014-04-02T00:00:00.000Z\",\"sender\":\"sdr3\",\"source\":\"src3\",\"type\":\"t3\",\"data\":{\"a\":3}}");
-        expect(console.log.args[5][0]).to.deep.equal(",{\"key\":\"MjAxNC0wNC0zMFQyMzowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch4\",\"schemeid\":\"sid4\",\"received\":\"2014-05-01T00:00:00.000Z\",\"raised\":\"2014-05-02T00:00:00.000Z\",\"sender\":\"sdr4\",\"source\":\"src4\",\"type\":\"t4\",\"data\":{\"a\":4}}");
+        expect(console.log.args[4][0]).to.deep.equal(",{\"key\":\"MjAxNC0wNC0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch3\",\"schemeid\":\"sid3\",\"received\":\"2014-04-01T00:00:00.000Z\",\"raised\":\"2014-04-02T00:00:00.000Z\",\"sender\":\"sdr3\",\"source\":\"src3\",\"type\":\"t3\",\"data\":{\"a\":3}}");
+        expect(console.log.args[5][0]).to.deep.equal(",{\"key\":\"MjAxNC0wNS0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch4\",\"schemeid\":\"sid4\",\"received\":\"2014-05-01T00:00:00.000Z\",\"raised\":\"2014-05-02T00:00:00.000Z\",\"sender\":\"sdr4\",\"source\":\"src4\",\"type\":\"t4\",\"data\":{\"a\":4}}");
         expect(console.log.args[6][0]).to.equal(']');
         return done();
       });
@@ -168,8 +168,8 @@ describe('elemez2json', function() {
       return elemez2json(argv, function() {
         expect(console.log.callCount).to.equal(4);
         expect(console.log.args[0][0]).to.equal('[');
-        expect(console.log.args[1][0]).to.deep.equal("{\"key\":\"MjAxNC0wMy0zMVQyMzowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch3\",\"schemeid\":\"sid3\",\"received\":\"2014-04-01T00:00:00.000Z\",\"raised\":\"2014-04-02T00:00:00.000Z\",\"sender\":\"sdr3\",\"source\":\"src3\",\"type\":\"t3\",\"data\":{\"a\":3}}");
-        expect(console.log.args[2][0]).to.deep.equal(",{\"key\":\"MjAxNC0wNC0zMFQyMzowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch4\",\"schemeid\":\"sid4\",\"received\":\"2014-05-01T00:00:00.000Z\",\"raised\":\"2014-05-02T00:00:00.000Z\",\"sender\":\"sdr4\",\"source\":\"src4\",\"type\":\"t4\",\"data\":{\"a\":4}}");
+        expect(console.log.args[1][0]).to.deep.equal("{\"key\":\"MjAxNC0wNC0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch3\",\"schemeid\":\"sid3\",\"received\":\"2014-04-01T00:00:00.000Z\",\"raised\":\"2014-04-02T00:00:00.000Z\",\"sender\":\"sdr3\",\"source\":\"src3\",\"type\":\"t3\",\"data\":{\"a\":3}}");
+        expect(console.log.args[2][0]).to.deep.equal(",{\"key\":\"MjAxNC0wNS0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch4\",\"schemeid\":\"sid4\",\"received\":\"2014-05-01T00:00:00.000Z\",\"raised\":\"2014-05-02T00:00:00.000Z\",\"sender\":\"sdr4\",\"source\":\"src4\",\"type\":\"t4\",\"data\":{\"a\":4}}");
         expect(console.log.args[3][0]).to.equal(']');
         return done();
       });
@@ -183,8 +183,8 @@ describe('elemez2json', function() {
         expect(console.log.args[1][0]).to.deep.equal("{\"key\":\"MjAxNC0wMS0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch0\",\"schemeid\":\"sid0\",\"received\":1388534400000,\"raised\":1388620800000,\"sender\":\"sdr0\",\"source\":\"src0\",\"type\":\"t0\",\"data\":{\"a\":0}}");
         expect(console.log.args[2][0]).to.deep.equal(",{\"key\":\"MjAxNC0wMi0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch1\",\"schemeid\":\"sid1\",\"received\":1391212800000,\"raised\":1391299200000,\"sender\":\"sdr1\",\"source\":\"src1\",\"type\":\"t1\",\"data\":{\"a\":1}}");
         expect(console.log.args[3][0]).to.deep.equal(",{\"key\":\"MjAxNC0wMy0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch2\",\"schemeid\":\"sid2\",\"received\":1393632000000,\"raised\":1393718400000,\"sender\":\"sdr2\",\"source\":\"src2\",\"type\":\"t2\",\"data\":{\"a\":2}}");
-        expect(console.log.args[4][0]).to.deep.equal(",{\"key\":\"MjAxNC0wMy0zMVQyMzowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch3\",\"schemeid\":\"sid3\",\"received\":1396310400000,\"raised\":1396396800000,\"sender\":\"sdr3\",\"source\":\"src3\",\"type\":\"t3\",\"data\":{\"a\":3}}");
-        expect(console.log.args[5][0]).to.deep.equal(",{\"key\":\"MjAxNC0wNC0zMFQyMzowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch4\",\"schemeid\":\"sid4\",\"received\":1398902400000,\"raised\":1398988800000,\"sender\":\"sdr4\",\"source\":\"src4\",\"type\":\"t4\",\"data\":{\"a\":4}}");
+        expect(console.log.args[4][0]).to.deep.equal(",{\"key\":\"MjAxNC0wNC0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch3\",\"schemeid\":\"sid3\",\"received\":1396310400000,\"raised\":1396396800000,\"sender\":\"sdr3\",\"source\":\"src3\",\"type\":\"t3\",\"data\":{\"a\":3}}");
+        expect(console.log.args[5][0]).to.deep.equal(",{\"key\":\"MjAxNC0wNS0wMVQwMDowMDowMFowMDAwMDAwMDAwMDAwMDAw\",\"scheme\":\"sch4\",\"schemeid\":\"sid4\",\"received\":1398902400000,\"raised\":1398988800000,\"sender\":\"sdr4\",\"source\":\"src4\",\"type\":\"t4\",\"data\":{\"a\":4}}");
         expect(console.log.args[6][0]).to.equal(']');
         return done();
       });
