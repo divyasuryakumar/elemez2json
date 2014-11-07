@@ -17,6 +17,11 @@ npm install -g elemez2json
 
 ```shell
 elemez2json --token <YOURTOKEN>
+
+elemez2json --token <YOURTOKEN> --start 2014-11-01 --end 2014-11-02
+
+# the -e switch prints dates in milliseconds from the Unix epoch
+elemez2json --token <YOURTOKEN> -e
 ```
 
 
