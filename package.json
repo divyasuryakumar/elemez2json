@@ -1,6 +1,6 @@
 {
   "name": "elemez2json",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Use the elemez raw data endpoint to extract data to json",
   "scripts": {
     "test": "mocha"
